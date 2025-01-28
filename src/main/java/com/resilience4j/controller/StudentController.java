@@ -1,4 +1,4 @@
-package com.resilience4j.ratelimiterBulkhead.controller;
+package com.resilience4j.controller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

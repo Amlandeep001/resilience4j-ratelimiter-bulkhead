@@ -1,4 +1,4 @@
-package com.resilience4j.ratelimiterBulkhead.dto;
+package com.resilience4j.dto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
