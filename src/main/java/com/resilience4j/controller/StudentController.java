@@ -28,7 +28,7 @@ public class StudentController
 	@Bulkhead(name = "courseBulkheadApi", fallbackMethod = "bulkheadFallback")
 	public ResponseEntity<String> getCourse(@PathVariable int id)
 	{
-		log.info("In course details for: " + id);
+        log.info("In course details for: {}", id);
 		try
 		{
 			Thread.sleep(1000);
@@ -37,7 +37,7 @@ public class StudentController
 		{
 			e.printStackTrace();
 		}
-		log.info("Returning course details for: " + id);
+        log.info("Returning course details for: {}", id);
 		return ResponseEntity.ok("Course" + id);
 	}
 
@@ -52,7 +52,7 @@ public class StudentController
 	public ResponseEntity<Object> rateLimitingFallback(int id, RequestNotPermitted ex)
 	{
 		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("Retry-After", "60s"); // retry after one second
+		responseHeaders.set("Retry-After", "60s"); // retry after one minute
 
 		return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
 				.headers(responseHeaders) // send retry header
