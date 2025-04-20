@@ -28,7 +28,7 @@ public class StudentController
 	@Bulkhead(name = "courseBulkheadApi", fallbackMethod = "bulkheadFallback")
 	public ResponseEntity<String> getCourse(@PathVariable int id)
 	{
-        log.info("In course details for: {}", id);
+		log.info("In course details for: {}", id);
 		try
 		{
 			Thread.sleep(1000);
@@ -37,7 +37,7 @@ public class StudentController
 		{
 			e.printStackTrace();
 		}
-        log.info("Returning course details for: {}", id);
+		log.info("Returning course details for: {}", id);
 		return ResponseEntity.ok("Course" + id);
 	}
 
@@ -46,7 +46,7 @@ public class StudentController
 		log.info("Bulkhead applied no further calls are accepted");
 
 		return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
-				.body("Too many request - No further calls are accepted");
+				.body("Too many requests - No further calls are accepted");
 	}
 
 	public ResponseEntity<Object> rateLimitingFallback(int id, RequestNotPermitted ex)
